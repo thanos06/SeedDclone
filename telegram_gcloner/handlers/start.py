@@ -18,8 +18,8 @@ def init(dispatcher: Dispatcher):
 
 @restricted
 def start(update, context):
-    rsp = update.message.reply_text('Upload a ZIP archive containing SA files in a private message first, and add /sa to the subject.\n'
-                                    'After that, use /folders to set destination folders.\n'
+    rsp = update.message.reply_text('🍁 Upload a ZIP archive containing SA files in a private message first, and add ➦ /sa to the subject.\n'
+                                    'After that, use ➦ /folders to set destination folders.\n'
                                     'Now just forward or send a Google Drive link.')
     rsp.done.wait(timeout=60)
     message_id = rsp.result().message_id
