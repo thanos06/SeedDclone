@@ -2,7 +2,7 @@
 	"name": "SPEED Dclone Bot",
 	"description": "SPEED Dclone Bot",
 	"repository": "https://github.com/woodcraft5/SeedDclone",
-	"keywords": ["dclone","FG"],
+	"keywords": ["fclone","FG"],
         "website": "https://t.me/woodcraft5",
         "success_url": "https://github.com/woodcraft5/SeedDclone/blob/main/README.md",
 	"env": {
