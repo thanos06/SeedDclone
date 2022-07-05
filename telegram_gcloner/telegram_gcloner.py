@@ -119,7 +119,7 @@ def main():
     load_handlers(updater.dispatcher)
 
     updater.start_polling()
-    updater.bot.send_message(chat_id=config.USER_IDS[0], text="🚀 Let's clone some drives in fast speed!")
+    updater.bot.send_message(chat_id=config.USER_IDS[0], text="★Powered By ➥ 𝐖𝐎𝐎𝐃𝐜𝐫𝐚𝐟𝐭 clone fast speed!")
     updater.idle()
 
 
