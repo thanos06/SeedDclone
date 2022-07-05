@@ -175,7 +175,7 @@ class MySaveFileThread(threading.Thread):
                         f'➦ File speed：<code>{progress_speed_file}</code>\n' if is_fclone is True else '',
                         progress_speed,
                         progress_eta,
-                        '✧' * progress_file_percentage_10 + '✦' * (10 - progress_file_percentage_10),
+                        '✦' * progress_file_percentage_10 + '✧' * (10 - progress_file_percentage_10),
                         progress_file_percentage)
 
                     match = re.search(r'Failed to copy: failed to make directory', output)
