@@ -9,6 +9,21 @@ Credit to original creator wrenfairbank
 
 ## Fclone (September 5) version 0.4.1 updated
 
+### ➦ Config Vars 
+
+➦ gclone_para_override = [skip]
+
+➦ group_ids = [-1]
+
+➦ telegram_token = [Required]
+
+➦ your user_ids = [Required]
+
+➦ [Deploy app]
+
+➦ Bot Successful
+
+
 # Deploy to heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/woodcraft5/SeedDclone)
