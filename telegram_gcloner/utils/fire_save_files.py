@@ -36,7 +36,7 @@ class MySaveFileThread(threading.Thread):
         chat_id = update.effective_chat.id
         user_id = update.effective_user.id
         gd = GoogleDrive(user_id)
-        message = 'Target directory：{}\n\n'.format(dest_folder['path'])
+        message = '★ Target directory ★：{}\n\n'.format(dest_folder['path'])
         inline_keyboard = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text=f'Stop', callback_data=f'stop_task,{thread_id}')]])
 
@@ -154,15 +154,15 @@ class MySaveFileThread(threading.Thread):
                         progress_checked_files = int(match_checked_files.group(1))
                         progress_total_check_files = int(match_checked_files.group(2))
                     progress_max_percentage_10 = max(progress_size_percentage_10, progress_file_percentage_10)
-                    message_progress = '📤 Source: <a href="https://drive.google.com/open?id={}">{}</a>\n' \
-                                       '🔸🔹🔸🔹🔸🔹🔸🔹🔸🔹\n' \
-                                       '🔍 Existing checks： {} / {}\n' \
-                                       '📄 Transfers： <code>{}</code> / {}\n' \
-                                       '📦 Size：<code>{}</code> / {}\n{}' \
-                                       '🛰 Bandwidth speed：<code>{}</code>\n' \
-                                       '⏰ Estimated time：<code>{}</code>\n' \
-                                       '⏳ Progress：{}\n' \
-                                       '📈 Percentage：<code>{}%</code>' \
+                    message_progress = '➦ Source: <a href="https://drive.google.com/open?id={}">{}</a>\n' \
+                                       '★★★★★★★★★★\n' \
+                                       '★ Existing checks： {} / {}\n' \
+                                       '★ Transfers： <code>{}</code> / {}\n' \
+                                       '★ Size：<code>{}</code> / {}\n{}' \
+                                       '★ Bandwidth speed：<code>{}</code>\n' \
+                                       '★ Estimated time：<code>{}</code>\n' \
+                                       '★ Progress：{}\n' \
+                                       '★ Percentage：<code>{}%</code>' \
                         .format(
                         folder_id,
                         html.escape(destination_path),
@@ -172,10 +172,10 @@ class MySaveFileThread(threading.Thread):
                         progress_total_files,
                         progress_transferred_size,
                         progress_total_size,
-                        f'🚀 File speed：<code>{progress_speed_file}</code>\n' if is_fclone is True else '',
+                        f'➦ File speed：<code>{progress_speed_file}</code>\n' if is_fclone is True else '',
                         progress_speed,
                         progress_eta,
-                        '✅' * progress_file_percentage_10 + '☑️' * (10 - progress_file_percentage_10),
+                        '✧' * progress_file_percentage_10 + '✦' * (10 - progress_file_percentage_10),
                         progress_file_percentage)
 
                     match = re.search(r'Failed to copy: failed to make directory', output)
@@ -238,7 +238,7 @@ class MySaveFileThread(threading.Thread):
             try:
                 link = gd.get_folder_link(dest_folder['folder_id'], destination_path)
                 if link:
-                    link_text = '👉<a href="{}">Link</a>'.format(link)
+                    link_text = '➦<a href="{}">Link</a>'.format(link)
             except Exception as e:
                 logger.info(str(e))
 
@@ -246,11 +246,11 @@ class MySaveFileThread(threading.Thread):
                 message = '{}{}❌\n{}\n{}\n\n'.format(message, message_progress_heading, message_progress_content,
                                                      link_text)
             elif progress_file_percentage == 0 and progress_checked_files > 0:
-                message = '{}{}✅\nFile already exists!\n{}\n\n'.format(message, message_progress_heading, link_text)
+                message = '{}{}➦\nFile already exists!\n{}\n\n'.format(message, message_progress_heading, link_text)
             else:
                 message = '{}{}{}\n{}\n{}\n\n'.format(message,
                                                       message_progress_heading,
-                                                      '✅' if rc == 0 else '❌',
+                                                      '➦' if rc == 0 else '❌',
                                                       message_progress_content,
                                                       link_text)
 
@@ -265,7 +265,7 @@ class MySaveFileThread(threading.Thread):
             if self.critical_fault is True:
                 break
 
-        message += 'Finished.'
+        message += '➦ Your file Successful.'
         try:
             context.bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=message,
                                           parse_mode=ParseMode.HTML, disable_web_page_preview=True)
