@@ -65,7 +65,7 @@ def process_drive_links(update, context):
 
     if not folder_ids:
         return
-    message = 'The following files were detected:\n'
+    message = '➦ The following files were detected:\n'
 
     try:
         gd = GoogleDrive(update.effective_user.id)
@@ -81,7 +81,7 @@ def process_drive_links(update, context):
             return
         message += '<a href="https://drive.google.com/open?id={}">{}</a>\n'.format(
             item, html.escape(folder_name))
-    message += '\nPlease select the target destination'
+    message += '\n➦ Please select the target destination'
     fav_folder_ids = context.user_data.get(udkey_folders, None)
 
     callback_query_prefix = 'save_to_folder'
