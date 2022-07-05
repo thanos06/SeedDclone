@@ -234,11 +234,11 @@ class MySaveFileThread(threading.Thread):
 
             rc = process.poll()
             message_progress_heading, message_progress_content = message_progress.split('\n', 1)
-            link_text = 'Unable to get link.'
+            link_text = '➦ Unable to get link ➦.'
             try:
                 link = gd.get_folder_link(dest_folder['folder_id'], destination_path)
                 if link:
-                    link_text = '➦<a href="{}">Link</a>'.format(link)
+                    link_text = '➦<a href="{}">🌼 Link 🌼</a>'.format(link)
             except Exception as e:
                 logger.info(str(e))
 
@@ -273,7 +273,7 @@ class MySaveFileThread(threading.Thread):
             logger.debug('Error {} occurs when editing message {} for user {} in chat {}: \n{}'.format(
                 e, message_id, user_id, chat_id, message))
         update.callback_query.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text='Done', callback_data='cancel')]]))
+            [[InlineKeyboardButton(text='🌼 Done 🌼', callback_data='cancel')]]))
 
         logger.debug('User {} has finished task {}: \n{}'.format(user_id, thread_id, message))
         tasks = thread_pool.get(user_id, None)
