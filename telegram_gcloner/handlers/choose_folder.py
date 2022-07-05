@@ -211,14 +211,14 @@ def choose_folder(update, context):
                     0, [InlineKeyboardButton('📁' + current_path,
                                              callback_data=callback_query_prefix)])
             inline_keyboard_drive_ids.append(
-                [InlineKeyboardButton('Select this folder({})'.format(current_folder_name),
+                [InlineKeyboardButton('🌼 Select this folder({})'.format(current_folder_name),
                                       callback_data='chosen_folder,{}'.format(current_folder_id))])
-    inline_keyboard_drive_ids.append([InlineKeyboardButton('Return to top',
+    inline_keyboard_drive_ids.append([InlineKeyboardButton('🍁 Return to top',
                                                            callback_data='choose_folder' if current_folder_id else '#'),
-                                      InlineKeyboardButton('Cancel', callback_data='cancel')])
+                                      InlineKeyboardButton('🌼 Cancel', callback_data='cancel')])
     context.bot.edit_message_text(chat_id=update.effective_chat.id,
                                   message_id=message_id,
-                                  text='Select the directory you want to use, there are {} subdirectories.'.format(
+                                  text='➦ Select the directory you want to use, there are {} subdirectories.'.format(
                                       folders_len),
                                   reply_markup=InlineKeyboardMarkup(inline_keyboard_drive_ids))
 
@@ -263,12 +263,12 @@ def set_folders(update, context):
         inline_keyboard_drive_ids = []
         folder_ids_len = 0
     if folder_ids_len < max_folders:
-        inline_keyboard_drive_ids.insert(0, [InlineKeyboardButton('Add favorite folder', callback_data=callback_query_prefix)])
-    inline_keyboard_drive_ids.append([InlineKeyboardButton('Done', callback_data='cancel')])
+        inline_keyboard_drive_ids.insert(0, [InlineKeyboardButton('🌼 Add favorite folder', callback_data=callback_query_prefix)])
+    inline_keyboard_drive_ids.append([InlineKeyboardButton('🌼 Done', callback_data='cancel')])
 
     context.bot.edit_message_text(chat_id=update.effective_chat.id,
                                   message_id=message_id,
-                                  text='Total {}/{} Destination Folders：'.format(
+                                  text='➦ Total {}/{} Destination Folders：'.format(
                                       folder_ids_len,
                                       max_folders,
                                   ),
